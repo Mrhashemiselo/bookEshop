@@ -1,0 +1,38 @@
+﻿@model EshopBook.Models.Books
+
+@{
+    ViewData["Title"] = "کتاب " + Model.BookName;
+}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">کتاب فروشی آنلاین</a>
+    <div class="collapse navbar-collapse" id="navbarcolor03">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link btn-success btn-lg text-center text-white" asp-area="" asp-controller="Home" asp-action="addbook">+ افزودن کتاب</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="نام کتاب را وارد کنید" />
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">جست و جو</button>
+        </form>
+    </div>
+</nav>
+
+<div class="text-center">
+    <div class="card">
+        <div class="card-header bg-dark text-white">
+            <h4>@Model.BookName</h4>
+        </div>
+        <div class="card-body">
+            <h6><b>نویسنده: </b> @Model.BookAuthor</h6>
+            <hr />
+            <h6><b>شابک: </b> @Model.BookShabak</h6>
+            <hr />
+            <h6><b>تاریخ انتشار: </b> @Model.BookRelease.ToShortDateString()</h6>
+            <hr />
+            <h6><b>قیمت: </b> @Model.BookPrice تومان</h6>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,77 @@
+﻿@model Publisher_CategoryViewModel
+
+@{
+    ViewData["Title"] = "افزودن کتاب";
+}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">کتاب فروشی آنلاین</a>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item">
+                <h4 class="text-dark"><b>افزودن کتاب</b></h4>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="Home" asp-action="addbook" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="BookName" class="control-label"></label>
+                <input asp-for="BookName" class="form-control" />
+                <span asp-validation-for="BookName" class="text-danger"></span>
+            </div>
+
+            <input type="hidden" asp-for="@Model.BookId" value="@Model.BookId" />
+
+            <div class="form-group">
+                <label asp-for="BookShabak" class="control-label"></label>
+                <input asp-for="BookShabak" class="form-control" />
+                <span asp-validation-for="BookShabak" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BookAuthor" class="control-label"></label>
+                <input asp-for="BookAuthor" class="form-control" />
+                <span asp-validation-for="BookAuthor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BookRelease" class="control-label"></label>
+                <input asp-for="BookRelease" class="form-control" />
+                <span asp-validation-for="BookRelease" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BookPrice" class="control-label"></label>
+                <input asp-for="BookPrice" class="form-control" />
+                <span asp-validation-for="BookPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Publishers" class="control-label"></label>
+                <select class="form-control" asp-for="PublisherId">
+                    @foreach (var item in Model.Publishers)
+                    {
+                        <option value="@item.PublisherId">@item.PubisherName</option>
+                    }
+                </select>
+                <span asp-validation-for="Publishers" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Groups" class="control-label"></label>
+                <select class="form-control" asp-for="GroupId">
+                    @foreach (var item in Model.Groups)
+                    {
+                        <option value="@item.GroupId">@item.GroupName</option>
+                    }
+                </select>
+                <span asp-validation-for="Groups" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="افزودن کتاب" class="btn btn-success"/>
+            </div>
+        </form>
+    </div>
+
+</div>
+

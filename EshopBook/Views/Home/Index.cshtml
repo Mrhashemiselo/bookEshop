@@ -1,0 +1,60 @@
+﻿@model IndexViewModel
+
+@{
+    ViewData["Title"] = "کتاب فروشی آنلاین";
+}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">کتاب فروشی آنلاین</a>
+    <div class="collapse navbar-collapse" id="navbarcolor03">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link btn-success btn-lg text-center text-white" asp-area="" asp-controller="Home" asp-action="addbook">+ افزودن کتاب</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0" asp-area="" asp-controller="Home" asp-action="searchBook" method="post" asp-for="bookname">
+            <input class="form-control mr-sm-2" type="text" id="bookname" name="bookname" placeholder="نام کتاب را وارد کنید" />
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">جست و جو</button>
+        </form>
+    </div>
+</nav>
+
+
+<div class="text-center">
+    <h5 class="rtl">آخرین کتاب ها:</h5>
+    <div class="row">
+        @foreach (var item in Model.Books)
+        {
+            <div class="col-3">
+                <div class="card">
+                    <a asp-controller="Home"
+                       asp-action="showbook"
+                       asp-route-id="@item.BookId"><b>@item.BookName</b></a>
+                    <h6>@item.BookAuthor</h6>
+                    <br />
+                    <h6>@item.BookPrice تومان</h6>
+                </div>
+            </div>
+        }
+    </div>
+
+    <hr />
+
+    <h5 class="rtl">دسته بندی ها:</h5>
+    <div class="row">
+        @foreach (var item in Model.BestBooks)
+        {
+            <div class="col-3">
+                <div class="card">
+                    <a><b>@item.Groupname</b></a>
+                    <br />
+                    <h6>تعداد: @item.countOfBook</h6>
+                    <h6>پربازدیدترین کتاب:</h6>
+                    <h6>@item.BookName</h6>
+                </div>
+
+            </div>
+        }
+    </div>
+
+</div>
